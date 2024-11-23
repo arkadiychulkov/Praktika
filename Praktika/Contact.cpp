@@ -1,22 +1,22 @@
 #include "Contact.h"
 #include<iostream>
-#include<CSTRING>
-Contact::Contact(char _num[20], char _city[15], char _country[15])
+#include<cstring>
+Contact::Contact(const char* _num[20], const char* _city[15], const char* _country[15])
 {
-	strncpy_s(num, _num, 20);
-	strncpy_s(city, _city, 15);
-	strncpy_s(country, _country, 15);
+	strncpy_s(num, *_num, 20);
+	strncpy_s(city, *_city, 15);
+	strncpy_s(country, *_country, 15);
 }
 
-Contact::Contact(char _num[20], char _city[15])
+Contact::Contact(const char* _num[20], const char* _city[15])
 {
-	strncpy_s(num, _num, 20);
-	strncpy_s(city, _city, 15);
+	strncpy_s(num, *_num, 20);
+	strncpy_s(city, *_city, 15);
 }
 
-Contact::Contact(char _num[20])
+Contact::Contact(const char* _num[20])
 {
-	strncpy_s(num, _num, 20);
+	strncpy_s(num, *_num, 20);
 }
 
 void Contact::Show() {
