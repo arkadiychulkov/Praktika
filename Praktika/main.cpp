@@ -3,13 +3,13 @@
 #include<cstring>
 
 int main() {
-    Contact contact1("1234567890", "AAA", "BBB");
+    Contact contact1("123456789", "AAA", "BBB");
     contact1.Show();
 
-    Contact contact2("0987654321", "AAA");
+    Contact contact2("098765421", "AAA");
     contact2.Show();
 
-    Contact contact3("1112223333");
+    Contact contact3("111222333");
     contact3.Show();
 
 }

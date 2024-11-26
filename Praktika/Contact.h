@@ -9,9 +9,9 @@ private:
     char country[15];
 
 public:
-    Contact(const char* _num[20], const char* _city[15], const char* _country[15]);
-    Contact(const char* _num[20], const char* _city[15]);
-    Contact(const char* _num[20]);
-
+    Contact(const char _num[20], const char _city[15], const char _country[15]);
+    Contact(const char _num[20], const char _city[15]);
+    Contact(const char _num[20]);
+    ~Contact();
     void Show();
 };
