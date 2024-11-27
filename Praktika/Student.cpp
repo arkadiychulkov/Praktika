@@ -1,11 +1,19 @@
 #include "Student.h"
+#include <iostream>
+#include <cstring>
 
-Student::Student(const char* _fullName, const char* _birthDate, Contact _contactInfo, Colege _collegeInfo)
-    : contactInfo(_contactInfo), collegeInfo(_collegeInfo) { // я не знаю почему так, я посмотрел в интернете
-    strncpy_s(fullName, _fullName, 49);
-    fullName[49] = '\0';
-    strncpy_s(birthDate, _birthDate, 14);
-    birthDate[14] = '\0';
+Student::Student(const char* _fullName, const char* _birthDate, const Contact& _contactInfo, const Colege& _collegeInfo)
+    : contactInfo(_contactInfo), collegeInfo(_collegeInfo) {
+    fullName = new char[strlen(_fullName) + 1];
+    strcpy_s(fullName, strlen(_fullName) + 1, _fullName);
+
+    birthDate = new char[strlen(_birthDate) + 1];
+    strcpy_s(birthDate, strlen(_birthDate) + 1, _birthDate);
+}
+
+Student::~Student() {
+    delete[] fullName;
+    delete[] birthDate;
 }
 
 void Student::Show() {

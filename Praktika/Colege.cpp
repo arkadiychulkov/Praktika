@@ -3,33 +3,38 @@
 #include <cstring>
 
 Colege::Colege(const char* _num, const char* _name) {
-    strncpy_s(num, _num, 9);
-    num[9] = '\0';
-    strncpy_s(name, _name, 14);
-    name[14] = '\0';
+    num = new char[strlen(_num) + 1];//не помню юзали или нет но я знаю
+    strcpy_s(num, strlen(_num) + 1, _num);
+
+    name = new char[strlen(_name) + 1];
+    strcpy_s(name, strlen(_name) + 1, _name);
 }
 
 Colege::Colege(const char* _num) {
-    strncpy_s(num, _num, 9);
-    num[9] = '\0';
-    name[0] = '\0';
+    num = new char[strlen(_num) + 1];
+    strcpy_s(num, strlen(_num) + 1, _num);
+
+    name = nullptr;
 }
 
 Colege::Colege(bool dummy, const char* _name) {
-    name[0] = '\0';
-    strncpy_s(name, _name, 14);
-    name[14] = '\0';
-    num[0] = '\0';
+    num = nullptr;
+
+    name = new char[strlen(_name) + 1];
+    strcpy_s(name, strlen(_name) + 1, _name);
+}
+
+Colege::~Colege() {
+    delete[] num;
+    delete[] name;
 }
 
 void Colege::Showc() {
-    if (this->num)
-    {
-        std::cout << this->num << " ";
+    if (num) {    
+        std::cout << num << " ";
     }
-    if (this->name)
-    {
-        std::cout << this->name << " ";
+    if (name) {
+        std::cout << name << " ";
     }
     std::cout << std::endl;
 }

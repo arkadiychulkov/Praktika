@@ -1,41 +1,51 @@
 #include "Contact.h"
-#include<iostream>
-#include<cstring>
-Contact::Contact(const char _num[20], const char _city[15], const char _country[15])
-{
-	strncpy_s(num, _num, 19);
-	this->num[20] = '\0';
-	strncpy_s(city, _city, 14);
-	this->city[15] = '\0';
-	strncpy_s(country, _country, 14);
-	this->country[15] = '\0';
+#include <iostream>
+#include <cstring>
+
+Contact::Contact(const char* _num, const char* _city, const char* _country) {
+    num = new char[strlen(_num) + 1];
+    strcpy_s(num, strlen(_num) + 1, _num);
+
+    city = new char[strlen(_city) + 1];
+    strcpy_s(city, strlen(_city) + 1, _city);
+
+    country = new char[strlen(_country) + 1];
+    strcpy_s(country, strlen(_country) + 1, _country);
 }
 
-Contact::Contact(const char _num[20], const char _city[15])
-{
-	strncpy_s(num, _num, 19);
-	this->num[20] = '\0';
-	strncpy_s(city, _city, 14);
-	this->city[15] = '\0';
+Contact::Contact(const char* _num, const char* _city) {
+    num = new char[strlen(_num) + 1];
+    strcpy_s(num, strlen(_num) + 1, _num);
+
+    city = new char[strlen(_city) + 1];
+    strcpy_s(city, strlen(_city) + 1, _city);
+
+    country = nullptr;
 }
 
-Contact::Contact(const char _num[20])
-{
-	strncpy_s(num, _num, 19);
-	this->num[20] = '\0';
+Contact::Contact(const char* _num) {
+    num = new char[strlen(_num) + 1];
+    strcpy_s(num, strlen(_num) + 1, _num);
+
+    city = nullptr;
+    country = nullptr;
+}
+
+Contact::~Contact() {
+    delete[] num;
+    delete[] city;
+    delete[] country;
 }
 
 void Contact::Show() {
-	if (this->num)
-	{
-		std::cout << this->num;
-	}if (this->city)
-	{
-		std::cout << this->city;
-	}
-	if (this->country)
-	{
-		std::cout << this->country;
-	}
-	std::cout << std::endl;
+    if (num) {
+        std::cout << num << " ";
+    }
+    if (city) {
+        std::cout << city << " ";
+    }
+    if (country) {
+        std::cout << country << " ";
+    }
+    std::cout << std::endl;
 }

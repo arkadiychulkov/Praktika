@@ -25,7 +25,6 @@ int main() {
 
     Contact studentContact("123456789", "Kiev", "Ukrain");
     Colege studentCollege("123456789", "Mit");
-
     Student student1("Chulkov Arkadii", "12/12/21", studentContact, studentCollege);
     student1.Show();
 
