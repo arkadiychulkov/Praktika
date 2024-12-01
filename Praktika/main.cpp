@@ -28,6 +28,14 @@ int main() {
     Student student1("Chulkov Arkadii", "12/12/21", studentContact, studentCollege);
     student1.Show();
 
+    Student student2(std::move(student1));
+    student2.Show();
+
+    //Contact studentContact2('\0', '\0', '\0');
+    //Colege studentCollege2('\0', '\0');
+    //Student student2('\0', "\0", studentContact, studentCollege);
+    
+
     return 0;
 
 }

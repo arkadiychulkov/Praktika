@@ -29,6 +29,11 @@ Colege::~Colege() {
     delete[] name;
 }
 
+Colege::Colege(Colege&& other) : num(other.num), name(other.name) {
+    other.num = nullptr;
+    other.name = nullptr;
+}
+
 void Colege::Showc() {
     if (num) {    
         std::cout << num << " ";

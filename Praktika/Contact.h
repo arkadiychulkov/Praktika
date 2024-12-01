@@ -12,7 +12,9 @@ public:
     Contact(const char* _num, const char* _city, const char* _country);
     Contact(const char* _num, const char* _city);
     Contact(const char* _num);
+    Contact(Contact&& other);
     ~Contact();
 
     void Show();
+     
 };

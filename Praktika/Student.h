@@ -12,8 +12,8 @@ private:
     Colege collegeInfo;
 
 public:
-    Student(const char* _fullName, const char* _birthDate, const Contact& _contactInfo, const Colege& _collegeInfo);
+    Student(const char* _fullName, const char* _birthDate, Contact& _contactInfo, Colege& _collegeInfo);
     ~Student();
-
+    Student(Student&& other);
     void Show();
 };

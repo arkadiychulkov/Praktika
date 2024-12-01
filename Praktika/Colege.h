@@ -12,6 +12,6 @@ public:
     Colege(const char* _num);
     Colege(bool dummy, const char* _name);
     ~Colege();
-
+    Colege(Colege&& other);
     void Showc();
 };

@@ -2,8 +2,8 @@
 #include <iostream>
 #include <cstring>
 
-Student::Student(const char* _fullName, const char* _birthDate, const Contact& _contactInfo, const Colege& _collegeInfo)
-    : contactInfo(_contactInfo), collegeInfo(_collegeInfo) {
+Student::Student(const char* _fullName, const char* _birthDate, Contact& _contactInfo, Colege& _collegeInfo)
+    : contactInfo(std::move(_contactInfo)), collegeInfo(std::move(_collegeInfo)) {
     fullName = new char[strlen(_fullName) + 1];
     strcpy_s(fullName, strlen(_fullName) + 1, _fullName);
 
@@ -14,6 +14,12 @@ Student::Student(const char* _fullName, const char* _birthDate, const Contact& _
 Student::~Student() {
     delete[] fullName;
     delete[] birthDate;
+}
+
+Student::Student(Student&& other)
+    : contactInfo(std::move(other.contactInfo)), collegeInfo(std::move(other.collegeInfo)), fullName(other.fullName), birthDate(other.birthDate) {
+    other.fullName = nullptr;
+    other.birthDate = nullptr;
 }
 
 void Student::Show() {

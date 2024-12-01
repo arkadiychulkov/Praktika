@@ -31,6 +31,12 @@ Contact::Contact(const char* _num) {
     country = nullptr;
 }
 
+Contact::Contact(Contact&& other) : num(other.num), city(other.city), country(other.country) {
+    other.num = nullptr;
+    other.city = nullptr;
+    other.country = nullptr;
+}
+
 Contact::~Contact() {
     delete[] num;
     delete[] city;
