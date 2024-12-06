@@ -3,39 +3,18 @@
 #include "Contact.h"
 #include "Colege.h"
 #include "Student.h"
+#include "Stringa.h"
 int main() {
-    /*Contact contact1("123456789", "AAA", "BBB");
-    contact1.Show();
-
-    Contact contact2("098765421", "AAA");
-    contact2.Show();
-
-    Contact contact3("111222333");
-    contact3.Show();*/
-
-
-    /*Colege col1("123456789", "Mit");
-    col1.Showc();
-
-    Colege col2(true, "987654321");
-    col2.Showc();
-
-    Colege col3("Oxford");
-    col3.Showc();*/
+    Stringa pib("Chulkov Arkadii");
+    Stringa date("12/12/21");
 
     Contact studentContact("123456789", "Kiev", "Ukrain");
     Colege studentCollege("123456789", "Mit");
-    Student student1("Chulkov Arkadii", "12/12/21", studentContact, studentCollege);
-    student1.Show();
-
-    Student student2(std::move(student1));
-    student2.Show();
-
-    //Contact studentContact2('\0', '\0', '\0');
-    //Colege studentCollege2('\0', '\0');
-    //Student student2('\0', "\0", studentContact, studentCollege);
+    Student student1(pib, date, studentContact, studentCollege);
     
+    student1.Show();
+    Student student2(std::move(student1));
+    student2.Show();   
 
     return 0;
-
 }

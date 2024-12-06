@@ -3,16 +3,17 @@
 #include <cstring>
 #include "Contact.h"
 #include "Colege.h"
+#include "Stringa.h"
 
 class Student {
 private:
-    char* fullName;
-    char* birthDate;
+    Stringa fullName;
+    Stringa birthDate;
     Contact contactInfo;
     Colege collegeInfo;
 
 public:
-    Student(const char* _fullName, const char* _birthDate, Contact& _contactInfo, Colege& _collegeInfo);
+    Student(Stringa _fullName, Stringa _birthDate, Contact& _contactInfo, Colege& _collegeInfo);
     ~Student();
     Student(Student&& other);
     void Show();

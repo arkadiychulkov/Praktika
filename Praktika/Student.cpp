@@ -1,25 +1,22 @@
 #include "Student.h"
+#include "Stringa.h"
 #include <iostream>
 #include <cstring>
 
-Student::Student(const char* _fullName, const char* _birthDate, Contact& _contactInfo, Colege& _collegeInfo)
-    : contactInfo(std::move(_contactInfo)), collegeInfo(std::move(_collegeInfo)) {
-    fullName = new char[strlen(_fullName) + 1];
-    strcpy_s(fullName, strlen(_fullName) + 1, _fullName);
+Student::Student(Stringa _fullName, Stringa _birthDate, Contact& _contactInfo, Colege& _collegeInfo)
+    : fullName(std::move(_fullName)), birthDate(std::move(_birthDate)),
+    contactInfo(std::move(_contactInfo)), collegeInfo(std::move(_collegeInfo)) {}
 
-    birthDate = new char[strlen(_birthDate) + 1];
-    strcpy_s(birthDate, strlen(_birthDate) + 1, _birthDate);
-}
 
 Student::~Student() {
-    delete[] fullName;
-    delete[] birthDate;
+    fullName.Delete();
+    birthDate.Delete();
 }
 
 Student::Student(Student&& other)
-    : contactInfo(std::move(other.contactInfo)), collegeInfo(std::move(other.collegeInfo)), fullName(other.fullName), birthDate(other.birthDate) {
-    other.fullName = nullptr;
-    other.birthDate = nullptr;
+    : contactInfo(std::move(other.contactInfo)), collegeInfo(std::move(other.collegeInfo)), fullName(std::move(other.fullName)), birthDate(std::move(other.birthDate)) {
+    fullName.Delete();
+    birthDate.Delete();
 }
 
 void Student::Show() {
